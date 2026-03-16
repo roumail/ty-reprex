@@ -1,0 +1,5 @@
+let g:lsp_log_file   = expand('~/vim-lsp.log')
+let s:local_dir      = expand('~/.local')
+let g:ty_log         = s:local_dir . '/ty.log'
+
+source .vimrc_common

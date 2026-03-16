@@ -1,0 +1,101 @@
+let s:vim_dir        = expand('~/.vim')
+let s:autoload_dir   = s:vim_dir . '/autoload'
+let s:plug_path      = s:autoload_dir . '/plug.vim'
+let s:plugged_dir    = s:vim_dir . '/plugged'
+let s:plug_url       = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+let s:vimrc_file = expand('~/.vimrc')
+" ------------------------------------------------------------
+" vim-lsp options
+" ------------------------------------------------------------
+let g:lsp_log_verbose = 1
+let g:lsp_diagnostics_enabled = 1 
+let g:lsp_settings_filetype_python = "ty" 
+
+" ------------------------------------------------------------
+" ty configuration
+" ------------------------------------------------------------
+
+let g:lsp_settings = {
+      \  'ty': {
+      \    "workspace_config": {
+      \      'ty': {
+      \        'diagnosticMode': 'workspace',
+      \        'showSyntaxErrors': v:true,
+      \        'inlayHints': {
+      \          'variableTypes': v:true,
+      \          'callArgumentNames': v:true
+      \        },
+      \        'completions': {
+      \          'autoImport': v:true
+      \        }
+      \      }
+      \    },
+      \    "initialization_options": {
+      \      'logFile': g:ty_log,
+      \      'logLevel': 'debug'
+      \    }
+      \  }
+      \}
+"
+" ------------------------------------------------------------
+" Bootstrap vim-plug
+" ------------------------------------------------------------
+if empty(glob(s:plug_path))
+  silent execute
+        \ '!curl -fLo ' . shellescape(s:plug_path)
+        \ . ' --create-dirs '
+        \ . s:plug_url
+end
+
+" ------------------------------------------------------------
+" Install missing plugins automatically
+" https://github.com/junegunn/vim-plug/wiki/extra#automatically-install-missing-plugins-on-startup
+" ------------------------------------------------------------
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+      \| PlugInstall --sync | source s:vimrc_file
+      \| endif
+
+" autocmd VimEnter *
+"   \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+"   \|   PlugInstall --sync | q
+"   \| endif
+ 
+" ------------------------------------------------------------
+" Plugins
+" ------------------------------------------------------------
+call plug#begin(s:plugged_dir)
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+call plug#end()
+
+" ------------------------------------------------------------
+" Basic LSP keymaps
+" ------------------------------------------------------------
+
+function! s:on_lsp_buffer_enabled() abort
+  setlocal omnifunc=lsp#complete
+  setlocal signcolumn=yes
+  if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+  nmap <buffer> gd <plug>(lsp-definition)
+  nmap <buffer> gi <plug>(lsp-implementation)
+  nmap <buffer> gr <plug>(lsp-references)
+endfunction
+
+augroup lsp_install
+  au!
+  " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+
+
+
+" ------------------------------------------------------------
+" Register ty language server
+" ------------------------------------------------------------
+if executable('ty')
+  au User lsp_setup call lsp#register_server({
+        \ 'name': 'ty',
+        \ 'cmd': {server_info->['ty', 'server']},
+        \ 'allowlist': ['python'],
+        \ })
+endif
