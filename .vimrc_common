@@ -59,7 +59,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 "   \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 "   \|   PlugInstall --sync | q
 "   \| endif
- 
+
 " ------------------------------------------------------------
 " Plugins
 " ------------------------------------------------------------
@@ -90,12 +90,13 @@ augroup END
 
 
 " ------------------------------------------------------------
-" Register ty language server
+" Register ty language server - This shouldn't be done again when using
+" vim-lsp-settings
 " ------------------------------------------------------------
-if executable('ty')
-  au User lsp_setup call lsp#register_server({
-        \ 'name': 'ty',
-        \ 'cmd': {server_info->['ty', 'server']},
-        \ 'allowlist': ['python'],
-        \ })
-endif
+" if executable('ty')
+"   au User lsp_setup call lsp#register_server({
+"         \ 'name': 'ty',
+"         \ 'cmd': {server_info->['ty', 'server']},
+"         \ 'allowlist': ['python'],
+"         \ })
+" endif
