@@ -17,7 +17,7 @@ let g:lsp_settings_filetype_python = "ty"
 
 let g:lsp_settings = {
       \  'ty': {
-      \    "workspace_config": {
+      \    "config": {
       \      'ty': {
       \        'diagnosticMode': 'workspace',
       \        'showSyntaxErrors': v:true,
