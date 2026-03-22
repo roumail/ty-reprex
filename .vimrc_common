@@ -15,135 +15,20 @@ let g:lsp_settings_filetype_python = "ty"
 " ------------------------------------------------------------
 " ty configuration
 " ------------------------------------------------------------
-" let g:lsp_settings = {
-"       \  'ty': {
-"       \    "workspace_config": {
-"       \      'ty': {
-"       \        'settings': {
-"       \         "configuration": {
-"       \            "rules": {
-"       \             "unresolved-reference": "warn"
-"       \           }
-"       \         },
-"       \         "configurationFile": s:ty_toml_file,
-"       \         "disableLanguageServices": v:true,
-"       \         'diagnosticMode': 'workspace',
-"       \         'showSyntaxErrors': v:true,
-"       \         'inlayHints': {
-"       \           'variableTypes': v:true,
-"       \           'callArgumentNames': v:true
-"       \         },
-"       \         'completions': {
-"       \           'autoImport': v:true
-"       \         }
-"       \        }
-"       \      }
-"       \    },
-"       \    "initialization_options": {
-"       \      'logFile': g:ty_log,
-"       \      'logLevel': 'debug'
-"       \    }
-"       \  }
-"       \}
-
-" let g:lsp_settings = {
-"       \  'ty': {
-"       \    "workspace_config": {
-"       \      'ty': {
-"       \        'settings': {
-"       \         "configurationFile": s:ty_toml_file,
-"       \        }
-"       \      }
-"       \    },
-"       \    "initialization_options": {
-"       \      'logFile': g:ty_log,
-"       \      'logLevel': 'debug'
-"       \    }
-"       \  }
-"       \}
-
-" let g:lsp_settings = {
-"       \  'ty': {
-"       \    "workspace_config": {
-"       \      'ty': {
-"       \        'diagnosticMode': 'workspace',
-"       \        'showSyntaxErrors': v:true,
-"       \        'inlayHints': {
-"       \          'variableTypes': v:true,
-"       \          'callArgumentNames': v:true
-"       \        },
-"       \        'completions': {
-"       \          'autoImport': v:true
-"       \        }
-"       \      }
-"       \    },
-"       \    "initialization_options": {
-"       \      'logFile': g:ty_log,
-"       \      'logLevel': 'debug'
-"       \    }
-"       \  }
-"       \}
-" let g:lsp_settings = {
-"       \  'ty': {
-"       \    "workspace_config": {
-"       \      'ty': {
-"       \        'diagnosticMode': 'workspace',
-"       \        'showSyntaxErrors': v:true,
-"       \      }
-"       \    },
-"       \    "initialization_options": {
-"       \      'logFile': g:ty_log,
-"       \      'logLevel': 'debug'
-"       \    }
-"       \  }
-"       \}
-
-" let g:lsp_settings = {
-" \  'ty': {
-" \    "initialization_options": {
-" \      'logFile': g:ty_log,
-" \      'logLevel': 'debug',
-" \      'settings': [
-" \        {
-" \          'diagnosticMode': 'workspace',
-" \          'showSyntaxErrors': v:true,
-" \          'inlayHints': {
-" \            'variableTypes': v:true,
-" \            'callArgumentNames': v:true
-" \          },
-" \          'completions': {
-" \            'autoImport': v:true
-" \          }
-" \        }
-" \      ],
-" \      'globalSettings': {
-" \        'diagnosticMode': 'workspace',
-" \        'showSyntaxErrors': v:false
-" \      }
-" \    }
-" \  }
-" \}
-
 
 let g:lsp_settings = {
 \   'ty': {
 \     'initialization_options': {
 \       'logFile': g:ty_log,
 \       'logLevel': 'debug',
-\       'settings': {
-\         'global': {
-\           'diagnosticMode': 'workspace',
-\           'showSyntaxErrors': v:true,
-\         },
-\         'workspace': {
-\           'inlayHints': {
-\             'variableTypes': v:true,
-\             'callArgumentNames': v:true,
-\           },
-\           'completions': {
-\             'autoImport': v:true,
-\           }
-\         }
+\       'diagnosticMode': 'workspace',
+\       'showSyntaxErrors': v:true,
+\       'inlayHints': {
+\         'variableTypes': v:true,
+\         'callArgumentNames': v:true,
+\       },
+\       'completions': {
+\         'autoImport': v:true,
 \       }
 \     }
 \   }
