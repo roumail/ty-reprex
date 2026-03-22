@@ -15,13 +15,14 @@ let g:lsp_settings_filetype_python = "ty"
 " ------------------------------------------------------------
 " ty configuration
 " ------------------------------------------------------------
-
 let g:lsp_settings = {
 \   'ty': {
 \     'initialization_options': {
 \       'logFile': g:ty_log,
 \       'logLevel': 'debug',
 \       'diagnosticMode': 'workspace',
+\       'configurationFile': s:ty_toml_file,
+\       'disableLanguageServices': v:true,
 \       'showSyntaxErrors': v:true,
 \       'inlayHints': {
 \         'variableTypes': v:true,
