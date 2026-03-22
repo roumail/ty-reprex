@@ -3,3 +3,4 @@
 vim-lsp.log
 ty.log
 *.swp
+.DS_Store
