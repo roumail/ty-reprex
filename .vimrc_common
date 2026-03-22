@@ -4,6 +4,7 @@ let s:plug_path      = s:autoload_dir . '/plug.vim'
 let s:plugged_dir    = s:vim_dir . '/plugged'
 let s:plug_url       = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 let s:vimrc_file = expand('~/.vimrc')
+let s:ty_toml_file = expand('~/ty.toml') 
 " ------------------------------------------------------------
 " vim-lsp options
 " ------------------------------------------------------------
@@ -14,29 +15,139 @@ let g:lsp_settings_filetype_python = "ty"
 " ------------------------------------------------------------
 " ty configuration
 " ------------------------------------------------------------
+" let g:lsp_settings = {
+"       \  'ty': {
+"       \    "workspace_config": {
+"       \      'ty': {
+"       \        'settings': {
+"       \         "configuration": {
+"       \            "rules": {
+"       \             "unresolved-reference": "warn"
+"       \           }
+"       \         },
+"       \         "configurationFile": s:ty_toml_file,
+"       \         "disableLanguageServices": v:true,
+"       \         'diagnosticMode': 'workspace',
+"       \         'showSyntaxErrors': v:true,
+"       \         'inlayHints': {
+"       \           'variableTypes': v:true,
+"       \           'callArgumentNames': v:true
+"       \         },
+"       \         'completions': {
+"       \           'autoImport': v:true
+"       \         }
+"       \        }
+"       \      }
+"       \    },
+"       \    "initialization_options": {
+"       \      'logFile': g:ty_log,
+"       \      'logLevel': 'debug'
+"       \    }
+"       \  }
+"       \}
+
+" let g:lsp_settings = {
+"       \  'ty': {
+"       \    "workspace_config": {
+"       \      'ty': {
+"       \        'settings': {
+"       \         "configurationFile": s:ty_toml_file,
+"       \        }
+"       \      }
+"       \    },
+"       \    "initialization_options": {
+"       \      'logFile': g:ty_log,
+"       \      'logLevel': 'debug'
+"       \    }
+"       \  }
+"       \}
+
+" let g:lsp_settings = {
+"       \  'ty': {
+"       \    "workspace_config": {
+"       \      'ty': {
+"       \        'diagnosticMode': 'workspace',
+"       \        'showSyntaxErrors': v:true,
+"       \        'inlayHints': {
+"       \          'variableTypes': v:true,
+"       \          'callArgumentNames': v:true
+"       \        },
+"       \        'completions': {
+"       \          'autoImport': v:true
+"       \        }
+"       \      }
+"       \    },
+"       \    "initialization_options": {
+"       \      'logFile': g:ty_log,
+"       \      'logLevel': 'debug'
+"       \    }
+"       \  }
+"       \}
+" let g:lsp_settings = {
+"       \  'ty': {
+"       \    "workspace_config": {
+"       \      'ty': {
+"       \        'diagnosticMode': 'workspace',
+"       \        'showSyntaxErrors': v:true,
+"       \      }
+"       \    },
+"       \    "initialization_options": {
+"       \      'logFile': g:ty_log,
+"       \      'logLevel': 'debug'
+"       \    }
+"       \  }
+"       \}
+
+" let g:lsp_settings = {
+" \  'ty': {
+" \    "initialization_options": {
+" \      'logFile': g:ty_log,
+" \      'logLevel': 'debug',
+" \      'settings': [
+" \        {
+" \          'diagnosticMode': 'workspace',
+" \          'showSyntaxErrors': v:true,
+" \          'inlayHints': {
+" \            'variableTypes': v:true,
+" \            'callArgumentNames': v:true
+" \          },
+" \          'completions': {
+" \            'autoImport': v:true
+" \          }
+" \        }
+" \      ],
+" \      'globalSettings': {
+" \        'diagnosticMode': 'workspace',
+" \        'showSyntaxErrors': v:false
+" \      }
+" \    }
+" \  }
+" \}
+
 
 let g:lsp_settings = {
-      \  'ty': {
-      \    "config": {
-      \      'ty': {
-      \        'diagnosticMode': 'workspace',
-      \        'showSyntaxErrors': v:true,
-      \        'inlayHints': {
-      \          'variableTypes': v:true,
-      \          'callArgumentNames': v:true
-      \        },
-      \        'completions': {
-      \          'autoImport': v:true
-      \        }
-      \      }
-      \    },
-      \    "initialization_options": {
-      \      'logFile': g:ty_log,
-      \      'logLevel': 'debug'
-      \    }
-      \  }
-      \}
-"
+\   'ty': {
+\     'initialization_options': {
+\       'logFile': g:ty_log,
+\       'logLevel': 'debug',
+\       'settings': {
+\         'global': {
+\           'diagnosticMode': 'workspace',
+\           'showSyntaxErrors': v:true,
+\         },
+\         'workspace': {
+\           'inlayHints': {
+\             'variableTypes': v:true,
+\             'callArgumentNames': v:true,
+\           },
+\           'completions': {
+\             'autoImport': v:true,
+\           }
+\         }
+\       }
+\     }
+\   }
+\ }
 " ------------------------------------------------------------
 " Bootstrap vim-plug
 " ------------------------------------------------------------
