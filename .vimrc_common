@@ -65,23 +65,29 @@ augroup END
 " ------------------------------------------------------------
 " Register ty language server directly, without vim-lsp-settings
 " ------------------------------------------------------------
+
 if executable('ty')
   au User lsp_setup call lsp#register_server({
         \ 'name': 'ty',
         \ 'cmd': {server_info->['ty', 'server']},
         \ 'allowlist': ['python'],
         \ 'initialization_options': {
-        \ 'logFile': g:ty_log,
-        \ 'logLevel': 'debug',
-        \ 'diagnosticMode': 'workspace',
-        \ 'configurationFile': s:ty_toml_file,
-        \ 'showSyntaxErrors': v:true,
-        \ 'inlayHints': {
-        \   'variableTypes': v:true,
-        \   'callArgumentNames': v:true,
+        \   'logFile': g:ty_log,
+        \   'logLevel': 'debug',
         \ },
-        \ 'completions': {
-        \   'autoImport': v:true ,
-        \ }}
+        \ 'workspace_config' : {
+        \  'ty': { 
+        \     'diagnosticMode': 'workspace',
+        \     'configurationFile': s:ty_toml_file,
+        \     'showSyntaxErrors': v:true,
+        \     'inlayHints': {
+        \       'variableTypes': v:true,
+        \       'callArgumentNames': v:true,
+        \     },
+        \     'completions': {
+        \       'autoImport': v:true ,
+        \     }
+        \   }
+        \ }
         \ })
 endif
