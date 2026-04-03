@@ -4,13 +4,13 @@ let s:plug_path      = s:autoload_dir . '/plug.vim'
 let s:plugged_dir    = s:vim_dir . '/plugged'
 let s:plug_url       = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 let s:vimrc_file = expand('~/.vimrc')
-let s:ty_toml_file = expand('~/ty.toml') 
+let s:ty_toml_file = expand('~/ty.toml')
 " ------------------------------------------------------------
 " vim-lsp options
 " ------------------------------------------------------------
 let g:lsp_log_verbose = 1
-let g:lsp_diagnostics_enabled = 1 
-let g:lsp_settings_filetype_python = "ty" 
+let g:lsp_diagnostics_enabled = 1
+let g:lsp_settings_filetype_python = "ty"
 
 " ------------------------------------------------------------
 " Bootstrap vim-plug
@@ -29,11 +29,6 @@ end
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
       \| PlugInstall --sync | source s:vimrc_file
       \| endif
-
-" autocmd VimEnter *
-"   \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-"   \|   PlugInstall --sync | q
-"   \| endif
 
 " ------------------------------------------------------------
 " Plugins
@@ -76,7 +71,7 @@ if executable('ty')
         \   'logLevel': 'debug',
         \ },
         \ 'workspace_config' : {
-        \  'ty': { 
+        \  'ty': {
         \     'diagnosticMode': 'workspace',
         \     'configurationFile': s:ty_toml_file,
         \     'showSyntaxErrors': v:true,
