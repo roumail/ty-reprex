@@ -3,12 +3,7 @@
 # ------------------------------------------------------------
 # Usage check
 # ------------------------------------------------------------
-if [ $# -eq 0 ]; then
-    echo "Usage: $0 <root-dir>"
-    exit 1
-fi
-
-ROOT="$1"
+ROOT_DIR="${1:-$PWD}"
 
 echo "Using ROOT: $ROOT"
 # echo "Using variant: $VARIANT"
