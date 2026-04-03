@@ -2,19 +2,19 @@
 A reproducible example about how to setup ty lsp with vim lsp and vim lsp settings
 
 ## Run using default variant in current directory
-./run.sh $PWD
+./run.sh
 
 ```bash
 # Post launch checks:
-# :PlugStatus 
+# :PlugStatus
 # - vim-lsp-settings: OK
 # - vim-lsp: OK
 
 # :LspStatus
-# - ty: running 
+# - ty: running
 #
 ###   def foo(x: int) -> int:
-#E>     return x + "hello"     
+#E>     return x + "hello"
 ###  Unsupported `+` operation
 
 ```
